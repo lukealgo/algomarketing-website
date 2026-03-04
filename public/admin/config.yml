@@ -9,6 +9,7 @@ backend:
   name: github
   repo: lukealgo/algomarketing-website
   branch: main
+  base_url: https://auth.sveltia.com
 
 publish_mode: editorial_workflow
 
