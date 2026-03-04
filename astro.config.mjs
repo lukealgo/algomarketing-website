@@ -9,7 +9,8 @@ import yaml from '@rollup/plugin-yaml';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://algomarketing.co.uk',
+  site: 'https://lukealgo.github.io',
+  base: '/algomarketing-website',
   integrations: [react(), mdx(), sitemap()],
   vite: {
     plugins: [tailwindcss(), yaml()]

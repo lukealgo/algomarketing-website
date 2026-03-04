@@ -2,22 +2,13 @@
 # Decap CMS Configuration — AlgoMarketing
 # ──────────────────────────────────────────────
 
-local_backend: true
+# ── Local development: uncomment local_backend and use git-gateway ──
+# local_backend: true
 
 backend:
-  name: git-gateway
+  name: github
+  repo: lukealgo/algomarketing-website
   branch: main
-
-# ── Netlify Identity (uncomment when deploying to Netlify) ──
-# backend:
-#   name: git-gateway
-#   branch: main
-
-# ── GitHub OAuth (uncomment for GitHub Pages / Vercel / other) ──
-# backend:
-#   name: github
-#   repo: your-org/your-repo
-#   branch: main
 
 publish_mode: editorial_workflow
 
