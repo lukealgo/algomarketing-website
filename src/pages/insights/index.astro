@@ -1,0 +1,113 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import GradientSection from '../../components/brand/GradientSection.astro';
+import EyebrowLabel from '../../components/brand/EyebrowLabel.astro';
+import OrbitalGraphic from '../../components/brand/OrbitalGraphic.astro';
+import CTABanner from '../../components/brand/CTABanner.astro';
+import Reveal from '../../components/brand/Reveal.astro';
+import { getCollection } from 'astro:content';
+import data from '../../data/pages/insights-index.yml';
+
+const insights = await getCollection('insights');
+const sortedInsights = insights.sort(
+  (a, b) => b.data.publishedDate.getTime() - a.data.publishedDate.getTime()
+);
+
+const featured = sortedInsights.find((i) => i.data.featured);
+const rest = sortedInsights.filter((i) => i !== featured);
+---
+
+<PageLayout title="Insights">
+  <!-- Hero -->
+  <GradientSection variant="hero">
+    <div class="relative text-center">
+      <OrbitalGraphic size="lg" class="absolute -left-32 -top-32" />
+      <EyebrowLabel class="text-white/80">INSIGHTS</EyebrowLabel>
+      <h1 class="text-4xl md:text-5xl font-bold text-white mt-4">
+        {data.hero.heading}
+      </h1>
+      <p class="text-white/80 text-lg max-w-2xl mx-auto mt-6">
+        {data.hero.subtext}
+      </p>
+    </div>
+  </GradientSection>
+
+  <!-- Featured Article -->
+  {featured && (
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <Reveal>
+          <a href={`/insights/${featured.id}`} class="block group">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <div class="rounded-2xl overflow-hidden aspect-video">
+                <img src="/images/insight-featured.jpg" alt="" class="w-full h-full object-cover" loading="lazy" />
+              </div>
+              <div>
+                <div class="flex items-center gap-3 mb-4">
+                  <span class="text-xs font-semibold uppercase tracking-wider text-brand-green bg-brand-green/10 px-3 py-1 rounded-full">
+                    {featured.data.category}
+                  </span>
+                  <span class="text-sm text-neutral-mid">
+                    {featured.data.publishedDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
+                  </span>
+                </div>
+                <h2 class="text-2xl md:text-3xl font-bold text-brand-navy group-hover:text-brand-green transition">
+                  {featured.data.title}
+                </h2>
+                <p class="text-neutral-mid mt-4">
+                  {featured.data.excerpt}
+                </p>
+                <span class="inline-block text-brand-green font-semibold mt-4 group-hover:translate-x-1 transition-transform">
+                  Read Article →
+                </span>
+              </div>
+            </div>
+          </a>
+        </Reveal>
+      </div>
+    </section>
+  )}
+
+  <!-- All Articles -->
+  <section class="py-16 bg-surface-gray">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-brand-navy mb-8">{data.allArticlesHeading}</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {rest.map((insight, i) => (
+          <Reveal delay={i}>
+            <a href={`/insights/${insight.id}`} class="block group">
+              <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition hover:-translate-y-1 card-hover">
+                <div class="aspect-video overflow-hidden">
+                  <img src="/images/insight-thumbnail.jpg" alt="" class="w-full h-full object-cover" loading="lazy" />
+                </div>
+                <div class="p-6">
+                  <div class="flex items-center gap-3 mb-3">
+                    <span class="text-xs font-semibold uppercase tracking-wider text-brand-green bg-brand-green/10 px-2 py-0.5 rounded-full">
+                      {insight.data.category}
+                    </span>
+                    <span class="text-xs text-neutral-mid">
+                      {insight.data.publishedDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
+                    </span>
+                  </div>
+                  <h3 class="text-lg font-bold text-brand-navy group-hover:text-brand-green transition">
+                    {insight.data.title}
+                  </h3>
+                  <p class="text-neutral-mid text-sm mt-2 line-clamp-3">
+                    {insight.data.excerpt}
+                  </p>
+                </div>
+              </div>
+            </a>
+          </Reveal>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <Reveal>
+    <CTABanner subtext={data.cta.subtext}>
+      {data.cta.heading}
+    </CTABanner>
+  </Reveal>
+</PageLayout>

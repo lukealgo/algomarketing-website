@@ -1,0 +1,23 @@
+heading: "This page doesn't exist — but your marketing challenge still does."
+
+body: "Let's get you back on track. Whether you're looking for marketing execution solutions, case studies, or want to speak with our team — we can help."
+
+primaryButton:
+  text: "Book a Discovery Call"
+  link: "/contact"
+
+secondaryButton:
+  text: "Explore Solutions"
+  link: "/solutions"
+
+popularPages:
+  label: "Popular pages:"
+  links:
+    - text: "Home"
+      href: "/"
+    - text: "About Us"
+      href: "/about"
+    - text: "Case Studies"
+      href: "/case-studies"
+    - text: "Insights"
+      href: "/insights"

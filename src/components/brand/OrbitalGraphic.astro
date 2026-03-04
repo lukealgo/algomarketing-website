@@ -1,0 +1,71 @@
+---
+interface Props {
+  size?: 'sm' | 'md' | 'lg';
+  class?: string;
+}
+
+const { size = 'md', class: className } = Astro.props;
+
+const sizeMap = {
+  sm: 200,
+  md: 400,
+  lg: 600,
+};
+
+const px = sizeMap[size];
+const center = px / 2;
+
+// Orbit radii proportional to size
+const orbits = [center * 0.35, center * 0.6, center * 0.85];
+
+// Dots placed at various angles on orbits
+const dots = [
+  { orbit: 0, angle: 30 },
+  { orbit: 0, angle: 200 },
+  { orbit: 1, angle: 75 },
+  { orbit: 1, angle: 180 },
+  { orbit: 1, angle: 310 },
+  { orbit: 2, angle: 20 },
+  { orbit: 2, angle: 140 },
+  { orbit: 2, angle: 260 },
+];
+
+function dotPosition(orbitIndex: number, angleDeg: number) {
+  const r = orbits[orbitIndex];
+  const rad = (angleDeg * Math.PI) / 180;
+  return {
+    cx: center + r * Math.cos(rad),
+    cy: center + r * Math.sin(rad),
+  };
+}
+
+const dotRadius = px * 0.012;
+---
+
+<svg
+  width={px}
+  height={px}
+  viewBox={`0 0 ${px} ${px}`}
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  class:list={['absolute opacity-20 pointer-events-none', className]}
+  aria-hidden="true"
+>
+  {/* Orbit rings */}
+  {orbits.map((r) => (
+    <circle
+      cx={center}
+      cy={center}
+      r={r}
+      stroke="#DDDDDD"
+      stroke-width="1"
+      fill="none"
+    />
+  ))}
+
+  {/* Dots on orbits */}
+  {dots.map(({ orbit, angle }) => {
+    const { cx, cy } = dotPosition(orbit, angle);
+    return <circle cx={cx} cy={cy} r={dotRadius} fill="#1FE0BF" />;
+  })}
+</svg>

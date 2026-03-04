@@ -1,0 +1,67 @@
+hero:
+  eyebrow: "GET IN TOUCH"
+  heading: "Get started today"
+  body: "Tell us what you're trying to execute, and we'll recommend the right solution for your team."
+
+form:
+  fields:
+    - label: "First name"
+      id: "firstName"
+      name: "firstName"
+      type: "text"
+      required: true
+      fullWidth: false
+    - label: "Last name"
+      id: "lastName"
+      name: "lastName"
+      type: "text"
+      required: true
+      fullWidth: false
+    - label: "Job title"
+      id: "jobTitle"
+      name: "jobTitle"
+      type: "text"
+      required: false
+      fullWidth: false
+    - label: "Company"
+      id: "company"
+      name: "company"
+      type: "text"
+      required: false
+      fullWidth: false
+    - label: "Phone number"
+      id: "phone"
+      name: "phone"
+      type: "tel"
+      required: false
+      fullWidth: true
+    - label: "Email"
+      id: "email"
+      name: "email"
+      type: "email"
+      required: true
+      fullWidth: true
+  messageField:
+    label: "How can we help you today?"
+    id: "message"
+    name: "message"
+  checkboxes:
+    - name: "agreeMarketing"
+      label: "I agree to receive product and service information from AlgoMarketing"
+    - name: "agreeNewsletter"
+      label: "I'd like to receive the AlgoMarketing newsletter"
+  submitText: "Send Message"
+
+trustedBy:
+  label: "Trusted by leading enterprises"
+  clients:
+    - "Stripe"
+    - "Google Cloud"
+    - "Cisco"
+    - "Zoom"
+    - "OpenAI"
+    - "Hexagon"
+
+contactImage:
+  src: "/images/contact-hero.jpg"
+  alt: "AlgoMarketing team collaborating in a modern workspace"

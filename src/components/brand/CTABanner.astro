@@ -1,0 +1,26 @@
+---
+interface Props {
+  subtext?: string;
+}
+
+const { subtext } = Astro.props;
+---
+
+<section class="w-full bg-gradient-primary py-16 md:py-24">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
+      <slot />
+    </h2>
+
+    {subtext && (
+      <p class="text-white/80 text-lg md:text-xl mb-10 max-w-2xl mx-auto">{subtext}</p>
+    )}
+
+    <a
+      href="/contact"
+      class="inline-block bg-white text-brand-navy font-semibold rounded-full px-8 py-4 text-lg transition-all duration-200 hover:bg-white/90 hover:shadow-lg hover:scale-105"
+    >
+      Book a Discovery Call
+    </a>
+  </div>
+</section>

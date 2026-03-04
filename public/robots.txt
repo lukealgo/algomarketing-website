@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://algomarketing.co.uk/sitemap-index.xml

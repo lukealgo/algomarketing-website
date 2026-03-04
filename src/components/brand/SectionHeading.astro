@@ -1,0 +1,27 @@
+---
+import EyebrowLabel from './EyebrowLabel.astro';
+
+interface Props {
+  eyebrow?: string;
+  align?: 'left' | 'center';
+  class?: string;
+}
+
+const { eyebrow, align = 'center', class: className } = Astro.props;
+
+const alignClass = align === 'center' ? 'text-center' : 'text-left';
+---
+
+<div class:list={['max-w-3xl', align === 'center' && 'mx-auto', alignClass, className]}>
+  {eyebrow && (
+    <EyebrowLabel class="mb-3 block">{eyebrow}</EyebrowLabel>
+  )}
+
+  <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-navy">
+    <slot />
+  </h2>
+
+  <slot name="description">
+    <!-- Optional description slot renders here -->
+  </slot>
+</div>

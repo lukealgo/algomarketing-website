@@ -1,0 +1,57 @@
+hero:
+  eyebrow: "MARKETING OPERATIONS"
+  heading: "Build the Operational Foundation for Scalable Marketing"
+  body: "Optimise your MarTech stack, unify regional reporting, and build the operational excellence that turns marketing spend into measurable pipeline."
+
+challenge:
+  eyebrow: "THE CHALLENGE"
+  heading: "Operational Chaos Kills Marketing Performance"
+  cards:
+    - stat: "15+"
+      text: "MarTech stacks grow organically — fragmented tools, duplicated spend, and no unified view of what's actually working."
+    - stat: "Silos"
+      text: "Regional teams operate independently with inconsistent processes, metrics, and reporting. The global view is a spreadsheet."
+    - stat: "Scarce"
+      text: "Marketing ops talent is rare and expensive to hire permanently. The best operators are already deployed elsewhere."
+
+approach:
+  eyebrow: "OUR APPROACH"
+  heading: "Systematic Operations Transformation"
+  steps:
+    - number: "01"
+      title: "Stack Assessment"
+      description: "Audit your MarTech ecosystem, identify redundancies, and map the optimal architecture for your goals."
+    - number: "02"
+      title: "Unification"
+      description: "Consolidate platforms, standardise processes, and build unified reporting across all regions and teams."
+    - number: "03"
+      title: "Optimisation"
+      description: "Implement AI-enhanced automation, lead management, and campaign operations that scale."
+    - number: "04"
+      title: "Operational Handover"
+      description: "Document everything. Train your team. Ensure complete self-sufficiency after engagement."
+
+useCases:
+  eyebrow: "USE CASES"
+  heading: "Marketing Operations Excellence"
+  cards:
+    - title: "MarTech Consolidation"
+      description: "Reduce tool sprawl and consolidate onto unified platforms with consistent governance and reduced spend."
+    - title: "Regional Alignment"
+      description: "Standardise marketing operations across 10, 20, or 50+ country markets with local flexibility and global visibility."
+    - title: "RevOps Integration"
+      description: "Connect marketing, sales, and customer success data for full-funnel visibility and attribution."
+    - title: "Process Automation"
+      description: "Eliminate manual reporting, approval bottlenecks, and repetitive campaign setup with intelligent automation."
+
+featuredCaseStudy:
+  eyebrow: "FEATURED CASE STUDY"
+  title: "Scaling Global Marketing Automation"
+  client: "Fortune 500 Technology"
+  stat: "200%"
+  statLabel: "Increase in MQLs"
+  slug: "scaling-global-marketing-automation"
+
+cta:
+  heading: "Ready to Optimise Your Marketing Operations?"
+  subtext: "Our marketing operations specialists have unified MarTech stacks at the world's largest companies."

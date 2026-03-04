@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="ogAlgoGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8A71EE"/>
+      <stop offset="50%" stop-color="#1DCDFE"/>
+      <stop offset="100%" stop-color="#1FE0BF"/>
+    </linearGradient>
+    <linearGradient id="ogAccentBar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8A71EE"/>
+      <stop offset="50%" stop-color="#1DCDFE"/>
+      <stop offset="100%" stop-color="#1FE0BF"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#2F455C"/>
+  <!-- Wordmark -->
+  <text x="600" y="290" font-family="Figtree, Arial, sans-serif" font-weight="600" font-size="64" text-anchor="middle">
+    <tspan fill="url(#ogAlgoGradient)">algo</tspan><tspan fill="#FFFFFF">marketing</tspan>
+  </text>
+  <!-- Tagline -->
+  <text x="600" y="350" font-family="Figtree, Arial, sans-serif" font-weight="400" font-size="24" fill="#FFFFFF" fill-opacity="0.8" text-anchor="middle">Marketing Execution Infrastructure</text>
+  <!-- Accent bar -->
+  <rect x="0" y="618" width="1200" height="12" fill="url(#ogAccentBar)"/>
+</svg>

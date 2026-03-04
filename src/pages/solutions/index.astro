@@ -1,0 +1,58 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import GradientSection from '../../components/brand/GradientSection.astro';
+import EyebrowLabel from '../../components/brand/EyebrowLabel.astro';
+import OrbitalGraphic from '../../components/brand/OrbitalGraphic.astro';
+import CTABanner from '../../components/brand/CTABanner.astro';
+import Reveal from '../../components/brand/Reveal.astro';
+import data from '../../data/pages/solutions-index.yml';
+---
+
+<PageLayout title="Solutions">
+  <!-- Hero -->
+  <GradientSection variant="hero">
+    <div class="relative flex flex-col items-center text-center py-16 md:py-24">
+      <OrbitalGraphic size="lg" class="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+      <div class="relative z-10">
+        <EyebrowLabel class="text-white mb-4 block">{data.hero.eyebrow}</EyebrowLabel>
+        <h1 class="text-white text-4xl md:text-5xl font-bold text-center">
+          {data.hero.heading}
+        </h1>
+        <p class="text-white/80 text-lg max-w-2xl mx-auto text-center mt-6">
+          {data.hero.body}
+        </p>
+      </div>
+    </div>
+  </GradientSection>
+
+  <!-- Solutions Grid -->
+  <section class="w-full bg-white py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {data.solutions.map(({ number, title, description, link }, i) => (
+          <Reveal delay={i}>
+            <a
+              href={link}
+              class="card-hover block bg-white rounded-2xl border border-neutral-light overflow-hidden hover:-translate-y-2 transition-all duration-200 shadow-sm hover:shadow-lg"
+            >
+              <div class="h-2 bg-gradient-primary"></div>
+              <div class="p-8">
+                <span class="text-5xl font-bold text-brand-green/20">{number}</span>
+                <h2 class="text-2xl font-bold text-brand-navy mt-4">{title}</h2>
+                <p class="text-neutral-mid mt-4">{description}</p>
+                <span class="link-highlight text-brand-green font-semibold mt-6 inline-block">Learn More &rarr;</span>
+              </div>
+            </a>
+          </Reveal>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <Reveal>
+    <CTABanner>
+      {data.cta.heading}
+    </CTABanner>
+  </Reveal>
+</PageLayout>

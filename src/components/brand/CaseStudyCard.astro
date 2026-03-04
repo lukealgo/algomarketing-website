@@ -1,0 +1,40 @@
+---
+interface Props {
+  title: string;
+  client: string;
+  stat: string;
+  statLabel: string;
+  slug: string;
+}
+
+const { title, client, stat, statLabel, slug } = Astro.props;
+---
+
+<a
+  href={`/case-studies/${slug}`}
+  class="group block bg-white border border-neutral-light rounded-xl shadow-sm overflow-hidden transition-all duration-200 hover:-translate-y-1 hover:shadow-md"
+>
+  <!-- Gradient accent bar -->
+  <div class="h-1 w-full bg-gradient-primary"></div>
+
+  <div class="p-6">
+    <!-- Client eyebrow -->
+    <span class="font-display font-semibold uppercase tracking-widest text-xs text-brand-green">
+      {client}
+    </span>
+
+    <!-- Title -->
+    <h3 class="text-lg font-bold text-brand-navy mt-2 mb-4">
+      {title}
+    </h3>
+
+    <!-- Stat -->
+    <p class="text-3xl font-bold text-brand-green mb-1">{stat}</p>
+    <p class="text-sm text-neutral-mid">{statLabel}</p>
+
+    <!-- Link -->
+    <span class="inline-block mt-4 text-sm font-semibold text-brand-navy group-hover:text-brand-green transition-colors duration-200">
+      Read Case Study &rarr;
+    </span>
+  </div>
+</a>

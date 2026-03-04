@@ -1,0 +1,122 @@
+---
+import '@fontsource/figtree/400.css';
+import '@fontsource/figtree/500.css';
+import '@fontsource/figtree/600.css';
+import '@fontsource/figtree/700.css';
+import '@fontsource/figtree/800.css';
+import '@fontsource/exo/600.css';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const {
+  title,
+  description = 'AlgoMarketing deploys AI-fluent marketing specialists into enterprise teams in days, not months. Marketing execution infrastructure for the AI era.',
+  ogImage = '/images/og-default.svg',
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <title>{title} | AlgoMarketing</title>
+    <meta name="description" content={description} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={`${title} | AlgoMarketing`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`${title} | AlgoMarketing`} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <slot name="head" />
+  </head>
+  <body class="min-h-screen bg-white antialiased">
+    <slot />
+
+    <script>
+      // Reveal-on-scroll observer
+      const revealEls = document.querySelectorAll('[data-reveal]');
+      if (revealEls.length > 0 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.15, rootMargin: '0px 0px -50px 0px' }
+        );
+        revealEls.forEach((el) => observer.observe(el));
+      } else {
+        // Reduced motion or no elements: show everything immediately
+        revealEls.forEach((el) => el.classList.add('revealed'));
+      }
+
+      // Counter animation
+      const counterEls = document.querySelectorAll('[data-counter]');
+      if (counterEls.length > 0) {
+        const duration = 1500;
+        const easeOut = (t: number) => 1 - Math.pow(1 - t, 3);
+
+        const animateCounter = (el: Element) => {
+          const raw = el.getAttribute('data-counter') || '0';
+          const match = raw.match(/^([\d.]+)(.*)$/);
+          if (!match) return;
+          const target = parseFloat(match[1]);
+          const suffix = match[2] || '';
+          const isInt = Number.isInteger(target);
+          let start: number | null = null;
+
+          const step = (ts: number) => {
+            if (start === null) start = ts;
+            const progress = Math.min((ts - start) / duration, 1);
+            const value = easeOut(progress) * target;
+            el.textContent = (isInt ? Math.round(value) : value.toFixed(1)) + suffix;
+            if (progress < 1) requestAnimationFrame(step);
+          };
+          requestAnimationFrame(step);
+        };
+
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          counterEls.forEach((el) => {
+            el.textContent = el.getAttribute('data-counter') || '';
+          });
+        } else {
+          const counterObserver = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  animateCounter(entry.target);
+                  counterObserver.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.3 }
+          );
+          counterEls.forEach((el) => {
+            el.textContent = '0' + (el.getAttribute('data-counter')?.replace(/[\d.]+/, '') || '');
+            counterObserver.observe(el);
+          });
+        }
+      }
+    </script>
+  </body>
+</html>

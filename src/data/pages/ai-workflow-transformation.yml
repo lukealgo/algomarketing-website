@@ -1,0 +1,57 @@
+hero:
+  eyebrow: "AI WORKFLOW TRANSFORMATION"
+  heading: "Transform Marketing Workflows with AI"
+  body: "Move beyond AI experiments. Our specialists build, deploy, and embed agentic AI solutions into your marketing operations — delivering real workflow transformation, not demos."
+
+challenge:
+  eyebrow: "THE CHALLENGE"
+  heading: "Most AI Initiatives Die in Pilot"
+  cards:
+    - stat: "87%"
+      text: "of enterprise AI initiatives never make it past pilot stage. Not because the tech doesn't work — because nobody planned for scale."
+    - stat: "Gap"
+      text: "Teams buy AI tools but lack the expertise to integrate them into workflows. Tools sit unused. Subscriptions waste budget."
+    - stat: "Widening"
+      text: "The gap between AI potential and operational reality keeps widening. Your competitors aren't waiting."
+
+approach:
+  eyebrow: "OUR APPROACH"
+  heading: "From Pilot to Production"
+  steps:
+    - number: "01"
+      title: "Workflow Audit"
+      description: "Map current processes, identify automation opportunities, and quantify the impact of transformation."
+    - number: "02"
+      title: "Solution Design"
+      description: "Build custom AI workflows using agentic AI, automation tools, and intelligent process design."
+    - number: "03"
+      title: "Implementation"
+      description: "Deploy solutions into live operations with your team. Not a demo — real execution from day one."
+    - number: "04"
+      title: "Enablement"
+      description: "Train your team to operate, maintain, and evolve AI workflows independently. No permanent dependency."
+
+useCases:
+  eyebrow: "USE CASES"
+  heading: "AI Transformation in Action"
+  cards:
+    - title: "Campaign Automation"
+      description: "AI-powered content generation, A/B testing, and campaign optimisation at scale — reducing manual effort by 70%+."
+    - title: "Lead Scoring & Routing"
+      description: "Machine learning models that improve qualification accuracy and accelerate pipeline velocity across regions."
+    - title: "Content Production"
+      description: "Generative AI workflows for multi-format, multi-market content at 3x the speed of traditional production."
+    - title: "Reporting & Analytics"
+      description: "Automated dashboards connecting marketing activity to revenue impact — updated in real time, not quarterly."
+
+featuredCaseStudy:
+  eyebrow: "FEATURED CASE STUDY"
+  title: "Cutting Campaign Production Time by 50%"
+  client: "Global Enterprise SaaS"
+  stat: "50%"
+  statLabel: "Production Time Reduction"
+  slug: "cutting-campaign-production-time"
+
+cta:
+  heading: "Ready to Transform Your Workflows?"
+  subtext: "Our specialists have done this before. Let's talk about your workflows."

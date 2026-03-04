@@ -1,0 +1,115 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import GradientSection from '../../components/brand/GradientSection.astro';
+import EyebrowLabel from '../../components/brand/EyebrowLabel.astro';
+import SectionHeading from '../../components/brand/SectionHeading.astro';
+import OrbitalGraphic from '../../components/brand/OrbitalGraphic.astro';
+import CaseStudyCard from '../../components/brand/CaseStudyCard.astro';
+import CTABanner from '../../components/brand/CTABanner.astro';
+import Reveal from '../../components/brand/Reveal.astro';
+import data from '../../data/pages/marketing-operations.yml';
+---
+
+<PageLayout title="Marketing Operations" description="Optimise your MarTech stack, unify reporting, and build the operational foundation for scalable marketing.">
+  <!-- Hero -->
+  <GradientSection variant="hero">
+    <div class="relative text-center">
+      <OrbitalGraphic size="lg" class="absolute -right-32 -top-32" />
+      <EyebrowLabel class="text-white/80">{data.hero.eyebrow}</EyebrowLabel>
+      <h1 class="text-4xl md:text-5xl font-bold text-white mt-4 max-w-4xl mx-auto">
+        {data.hero.heading}
+      </h1>
+      <p class="text-white/80 text-lg max-w-2xl mx-auto mt-6">
+        {data.hero.body}
+      </p>
+    </div>
+  </GradientSection>
+
+  <!-- The Challenge -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Reveal>
+        <SectionHeading eyebrow={data.challenge.eyebrow}>
+          {data.challenge.heading}
+        </SectionHeading>
+      </Reveal>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+        {data.challenge.cards.map((card, i) => (
+          <Reveal delay={i}>
+            <div class="bg-surface-blue rounded-xl p-6">
+              <div class="text-3xl font-bold text-brand-blue mb-3">{card.stat}</div>
+              <p class="text-neutral-mid">{card.text}</p>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- The Approach -->
+  <section class="py-16 md:py-24 bg-surface-green">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Reveal>
+        <SectionHeading eyebrow={data.approach.eyebrow}>
+          {data.approach.heading}
+        </SectionHeading>
+      </Reveal>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mt-12">
+        {data.approach.steps.map((step, i) => (
+          <Reveal delay={i}>
+            <div class="text-center">
+              <div class="text-5xl font-bold text-brand-green">{step.number}</div>
+              <h3 class="font-semibold text-brand-navy text-lg mt-4">{step.title}</h3>
+              <p class="text-neutral-mid text-sm mt-2">{step.description}</p>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Use Cases -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Reveal>
+        <SectionHeading eyebrow={data.useCases.eyebrow}>
+          {data.useCases.heading}
+        </SectionHeading>
+      </Reveal>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+        {data.useCases.cards.map((uc, i) => (
+          <Reveal delay={i}>
+            <div class="card-hover border border-neutral-light rounded-xl p-6 hover:border-brand-blue/30 transition">
+              <h3 class="font-bold text-brand-navy text-lg">{uc.title}</h3>
+              <p class="text-neutral-mid mt-2">{uc.description}</p>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Study -->
+  <section class="py-16 md:py-24 bg-brand-navy">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Reveal>
+        <EyebrowLabel class="text-white/60">{data.featuredCaseStudy.eyebrow}</EyebrowLabel>
+        <div class="mt-8 max-w-md">
+          <CaseStudyCard
+            title={data.featuredCaseStudy.title}
+            client={data.featuredCaseStudy.client}
+            stat={data.featuredCaseStudy.stat}
+            statLabel={data.featuredCaseStudy.statLabel}
+            slug={data.featuredCaseStudy.slug}
+          />
+        </div>
+      </Reveal>
+    </div>
+  </section>
+
+  <Reveal>
+    <CTABanner subtext={data.cta.subtext}>
+      {data.cta.heading}
+    </CTABanner>
+  </Reveal>
+</PageLayout>

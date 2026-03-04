@@ -1,0 +1,52 @@
+---
+import EyebrowLabel from './EyebrowLabel.astro';
+import data from '../../data/shared/client-logos.yml';
+
+const companies = data.companies;
+---
+
+<section class="w-full py-16 md:py-24 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-12">
+    <EyebrowLabel class="mb-3 block">{data.eyebrow}</EyebrowLabel>
+    <h2 class="text-2xl md:text-3xl font-bold text-brand-navy">
+      {data.heading}
+    </h2>
+  </div>
+
+  <div class="relative">
+    <!-- Fade edges -->
+    <div class="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white to-transparent z-10"></div>
+    <div class="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent z-10"></div>
+
+    <div class="marquee-track flex items-center gap-16">
+      <!-- First set -->
+      {companies.map(({ name, logo }) => (
+        <img src={logo} alt={name} class="shrink-0 h-8 w-auto select-none opacity-50 hover:opacity-80 transition-opacity" loading="lazy" />
+      ))}
+      <!-- Duplicated set for seamless loop -->
+      {companies.map(({ name, logo }) => (
+        <img src={logo} alt={name} class="shrink-0 h-8 w-auto select-none opacity-50 hover:opacity-80 transition-opacity" loading="lazy" />
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .marquee-track {
+    animation: marquee 30s linear infinite;
+    width: max-content;
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+</style>

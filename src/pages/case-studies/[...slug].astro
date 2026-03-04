@@ -1,0 +1,217 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import GradientSection from '../../components/brand/GradientSection.astro';
+import EyebrowLabel from '../../components/brand/EyebrowLabel.astro';
+import OrbitalGraphic from '../../components/brand/OrbitalGraphic.astro';
+import StatCard from '../../components/brand/StatCard.astro';
+import CTABanner from '../../components/brand/CTABanner.astro';
+import Reveal from '../../components/brand/Reveal.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const caseStudies = await getCollection('case-studies');
+  return caseStudies.map((study) => ({
+    params: { slug: study.id },
+    props: { study },
+  }));
+}
+
+const { study } = Astro.props;
+const { Content } = await render(study);
+
+const solutionCategoryLabels: Record<string, string> = {
+  'embedded-talent': 'Embedded Talent',
+  'ai-workflow-transformation': 'AI Workflow Transformation',
+  'marketing-operations': 'Marketing Operations',
+};
+const categoryLabel = solutionCategoryLabels[study.data.solutionCategory] || study.data.solutionCategory;
+---
+
+<PageLayout title={study.data.title}>
+  <!-- Hero -->
+  <GradientSection variant="hero">
+    <div class="relative text-center">
+      <OrbitalGraphic size="lg" class="absolute -right-32 -top-32" />
+      <div class="flex items-center justify-center gap-2 mb-4">
+        <EyebrowLabel class="text-white/80">CASE STUDY</EyebrowLabel>
+        <span class="text-white/40 text-sm">—</span>
+        <span class="text-sm font-semibold text-brand-green">{categoryLabel}</span>
+      </div>
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-4 max-w-4xl mx-auto">
+        {study.data.title}
+      </h1>
+      <div class="flex items-center justify-center gap-4 mt-6">
+        <span class="text-white/60 text-sm">{study.data.client}</span>
+        <span class="text-white/40">•</span>
+        <span class="text-white/60 text-sm">{study.data.industry}</span>
+      </div>
+    </div>
+  </GradientSection>
+
+  <!-- Results Stats Bar -->
+  <section class="py-12 bg-brand-navy">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {study.data.results.map((result: { value: string; metric: string }, i: number) => (
+          <Reveal delay={i}>
+            <div class="text-center">
+              <div class="text-4xl md:text-5xl font-bold text-brand-green" data-counter={result.value}>{result.value}</div>
+              <div class="text-white/70 text-sm mt-2 uppercase tracking-wider">{result.metric}</div>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Challenge Callout + Image -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <!-- Challenge Card -->
+        <Reveal>
+          <div class="relative">
+            <div class="absolute -left-3 top-0 bottom-0 w-1 bg-gradient-to-b from-brand-purple via-brand-blue to-brand-green rounded-full"></div>
+            <div class="pl-8">
+              <EyebrowLabel class="mb-3 block text-brand-purple">THE CHALLENGE</EyebrowLabel>
+              <p class="text-xl md:text-2xl font-bold text-brand-navy leading-snug">
+                {study.data.challenge}
+              </p>
+            </div>
+          </div>
+        </Reveal>
+
+        <!-- Image / Visual -->
+        <Reveal delay={1}>
+          {study.data.heroImage ? (
+            <div class="rounded-2xl overflow-hidden aspect-video shadow-lg">
+              <img src={study.data.heroImage} alt="" class="w-full h-full object-cover" loading="lazy" />
+            </div>
+          ) : (
+            <div class="rounded-2xl overflow-hidden aspect-video bg-gradient-to-br from-surface-purple to-surface-green relative">
+              <div class="absolute inset-0 flex items-center justify-center">
+                <OrbitalGraphic size="lg" class="opacity-30" />
+              </div>
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="text-center px-8">
+                  <div class="inline-flex items-center gap-3 bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 shadow-sm">
+                    <span class="w-2.5 h-2.5 rounded-full bg-brand-green animate-pulse"></span>
+                    <span class="text-brand-navy font-semibold text-sm">{study.data.client}</span>
+                    <span class="text-neutral-mid text-sm">× AlgoMarketing</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </Reveal>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solution Overview Callout -->
+  <section class="bg-surface-green">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <Reveal>
+        <div class="flex items-start gap-4 md:gap-6">
+          <div class="shrink-0 w-12 h-12 rounded-xl bg-brand-green/10 flex items-center justify-center">
+            <svg class="w-6 h-6 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+            </svg>
+          </div>
+          <div>
+            <p class="text-sm font-semibold text-brand-green uppercase tracking-wider mb-1">Our Approach</p>
+            <p class="text-neutral-dark text-lg">{study.data.solution}</p>
+          </div>
+        </div>
+      </Reveal>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Reveal>
+        <article class="case-study-prose prose prose-lg max-w-none prose-headings:text-brand-navy prose-headings:font-bold prose-p:text-neutral-dark prose-strong:text-brand-navy prose-a:text-brand-green prose-a:no-underline hover:prose-a:underline">
+          <Content />
+        </article>
+      </Reveal>
+    </div>
+  </section>
+
+  <!-- Results Deep-Dive -->
+  <section class="py-16 md:py-24 bg-surface-gray">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Reveal>
+        <div class="text-center mb-12">
+          <EyebrowLabel class="mb-3 block">MEASURABLE IMPACT</EyebrowLabel>
+          <h2 class="text-3xl md:text-4xl font-bold text-brand-navy">The Results</h2>
+        </div>
+      </Reveal>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {study.data.results.map((result: { value: string; metric: string }, i: number) => (
+          <Reveal delay={i}>
+            <StatCard value={result.value} label={result.metric} animate />
+          </Reveal>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <Reveal>
+    <CTABanner subtext="We deploy specialists who've solved this exact problem before.">
+      Facing a Similar Challenge?
+    </CTABanner>
+  </Reveal>
+</PageLayout>
+
+<style is:global>
+  /* Case study prose enhancements */
+  .case-study-prose h2 {
+    margin-top: 3rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid #F1FCF9;
+    position: relative;
+  }
+
+  .case-study-prose h2::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(to right, #8A71EE, #1FE0BF);
+    border-radius: 1px;
+  }
+
+  .case-study-prose h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+
+  .case-study-prose h3::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #1FE0BF;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  /* Pull-quote styling for bold paragraphs */
+  .case-study-prose p > strong:first-child:last-child,
+  .case-study-prose p > strong:only-child {
+    display: block;
+    font-size: 1.15em;
+    color: #2F455C;
+    border-left: 3px solid #1FE0BF;
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    line-height: 1.6;
+  }
+</style>

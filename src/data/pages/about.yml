@@ -1,0 +1,71 @@
+hero:
+  eyebrow: "ABOUT US"
+  heading: "Welcome to Algomarketing"
+  body: "The 'Algo' in 'Algomarketing' stems from the word 'algorithm' — a set of rules for solving problems. We apply that thinking to enterprise marketing execution."
+
+story:
+  eyebrow: "OUR STORY"
+  heading: "Built for Modern Marketing Execution"
+  paragraphs:
+    - "Algomarketing was founded in 2017 with a clear mission: to give enterprise marketing teams instant access to AI-fluent marketing talent that traditional hiring processes can't deliver."
+    - "We're not a staffing firm. We're not a marketplace. We're marketing execution infrastructure — a structured deployment model that combines experienced enterprise marketers, practical AI expertise, and operational oversight."
+    - "Our community of specialists — the Algos — embed directly into client teams, transforming workflows and delivering measurable results."
+
+founder:
+  eyebrow: "OUR FOUNDER"
+  name: "Yomi Tejumola"
+  title: "CEO & Founder"
+  paragraphs:
+    - "Before founding Algomarketing, Yomi Tejumola worked as a Marketing Data Scientist at Google, where she saw first-hand the gap between marketing ambition and execution capability."
+    - "Recognised as an EY Entrepreneur of the Year 2025 finalist and LDC UK Top 50, Yomi built Algomarketing to bridge that gap — deploying AI-fluent marketing specialists who don't just fill roles, but transform how enterprise teams operate."
+    - "As a BAME-founded company, diversity isn't a policy at Algomarketing — it's our foundation."
+  photo: "/images/founder-yomi.jpg"
+
+timeline:
+  eyebrow: "OUR JOURNEY"
+  heading: "Growing With Purpose"
+  entries:
+    - year: "2017"
+      description: "Founded by Yomi Tejumola with a vision to transform enterprise marketing execution"
+    - year: "2018"
+      description: "Team of 4 delivers Google Cloud automation projects"
+    - year: "2019"
+      description: "Operations span 27 countries with offices in UK, USA, Netherlands, and Singapore"
+    - year: "2021"
+      description: "Become preferred supplier for Google Cloud; partnership with Zoom begins"
+    - year: "2022"
+      description: "Expanded Zoom's field marketing across USA and Brazil"
+    - year: "2023"
+      description: "New enterprise clients: Stripe, OpenAI, Chaos, Cisco, Hexagon"
+    - year: "2024"
+      description: "Yomi recognised in UK Top 50; Martin Adams joins advisory board"
+
+diversity:
+  heading: "Diversity at Our Core"
+  stats:
+    - value: "57%"
+      label: "Female team members"
+    - value: "MSDUK"
+      label: "Certified supplier"
+    - value: "27+"
+      label: "Countries served"
+
+process:
+  eyebrow: "OUR PROCESS"
+  heading: "How We Work"
+  steps:
+    - number: "01"
+      title: "Capability Analysis"
+      description: "We assess your team's current execution gaps and define the skills needed"
+    - number: "02"
+      title: "Talent Selection"
+      description: "Match you with pre-vetted, AI-fluent specialists from our Algo community"
+    - number: "03"
+      title: "Onboarding & Enablement"
+      description: "Seamless integration into your team's workflows and tools"
+    - number: "04"
+      title: "Partnership Success Monitoring"
+      description: "Ongoing performance tracking and delivery management"
+
+cta:
+  heading: "Ready to Transform Your Marketing Execution?"

@@ -1,0 +1,57 @@
+hero:
+  eyebrow: "EMBEDDED TALENT"
+  heading: "Deploy AI-Fluent Marketers in Days, Not Months"
+  body: "Embed experienced marketing specialists directly into your team. They integrate into your workflows, execute from day one, and scale with your needs."
+
+challenge:
+  eyebrow: "THE CHALLENGE"
+  heading: "Traditional Hiring Can't Keep Up"
+  cards:
+    - stat: "4-6 mo"
+      text: "Recruitment cycles of 4-6 months mean missed market opportunities and stalled campaigns."
+    - stat: "#1"
+      text: "AI-fluent marketing talent is the most competitive hiring market globally. The best operators aren't on job boards."
+    - stat: "6-8 wk"
+      text: "Onboarding new hires takes weeks before they're productive. You need impact now, not eventually."
+
+approach:
+  eyebrow: "OUR APPROACH"
+  heading: "Capability Deployment, Not Employment Procurement"
+  steps:
+    - number: "01"
+      title: "Brief & Match"
+      description: "Define your execution needs. We identify the right Algo from our specialist community within 48 hours."
+    - number: "02"
+      title: "Embed & Integrate"
+      description: "Your Algo joins your team, tools, and workflows. Full integration, not arm's-length consulting."
+    - number: "03"
+      title: "Execute & Deliver"
+      description: "Immediate execution on campaigns, projects, and workflows. Results from week one."
+    - number: "04"
+      title: "Scale & Evolve"
+      description: "Add specialists as needs grow. Remove them when the project completes. Total flexibility."
+
+useCases:
+  eyebrow: "USE CASES"
+  heading: "Where Embedded Talent Makes the Difference"
+  cards:
+    - title: "Demand Generation Teams"
+      description: "Scale pipeline-driving campaigns with specialists in paid media, ABM, and lead nurturing."
+    - title: "Content & Creative Teams"
+      description: "Embed AI-fluent content strategists and creators who multiply output without sacrificing quality."
+    - title: "Regional Marketing Expansion"
+      description: "Deploy marketers across new geographies with local expertise and cultural fluency."
+    - title: "Marketing Technology Projects"
+      description: "Specialists in Marketo, HubSpot, Salesforce, and AI tool implementation ready to execute."
+
+featuredCaseStudy:
+  eyebrow: "FEATURED CASE STUDY"
+  title: "Engineering Scalable GenAI Solutions"
+  client: "Global Manufacturing Leader"
+  stat: "290%"
+  statLabel: "Productivity Increase"
+  slug: "engineering-scalable-genai-solutions"
+
+cta:
+  heading: "Ready to Embed Specialist Talent?"
+  subtext: "Tell us what you need to execute, and we'll match you with the right specialist."

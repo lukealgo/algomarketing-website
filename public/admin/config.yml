@@ -1,0 +1,611 @@
+# ──────────────────────────────────────────────
+# Decap CMS Configuration — AlgoMarketing
+# ──────────────────────────────────────────────
+
+local_backend: true
+
+backend:
+  name: git-gateway
+  branch: main
+
+# ── Netlify Identity (uncomment when deploying to Netlify) ──
+# backend:
+#   name: git-gateway
+#   branch: main
+
+# ── GitHub OAuth (uncomment for GitHub Pages / Vercel / other) ──
+# backend:
+#   name: github
+#   repo: your-org/your-repo
+#   branch: main
+
+publish_mode: editorial_workflow
+
+media_folder: "public/images"
+public_folder: "/images"
+
+editor:
+  preview: false
+
+collections:
+  # ════════════════════════════════════════════
+  # CONTENT COLLECTIONS (folder-based, many files)
+  # ════════════════════════════════════════════
+
+  - name: "case-studies"
+    label: "Case Studies"
+    folder: "src/content/case-studies"
+    create: true
+    slug: "{{slug}}"
+    preview_path: "case-studies/{{slug}}"
+    extension: "mdx"
+    format: "frontmatter"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Client", name: "client", widget: "string", hint: "e.g. Fortune 500 Technology Company" }
+      - { label: "Industry", name: "industry", widget: "string" }
+      - { label: "Challenge", name: "challenge", widget: "text", hint: "One-sentence summary shown as callout" }
+      - { label: "Solution", name: "solution", widget: "text", hint: "One-sentence summary shown as callout" }
+      - label: "Solution Category"
+        name: "solutionCategory"
+        widget: "select"
+        options:
+          - { label: "Embedded Talent", value: "embedded-talent" }
+          - { label: "AI Workflow Transformation", value: "ai-workflow-transformation" }
+          - { label: "Marketing Operations", value: "marketing-operations" }
+      - label: "Results"
+        name: "results"
+        widget: "list"
+        min: 1
+        max: 4
+        summary: "{{fields.value}} — {{fields.metric}}"
+        fields:
+          - { label: "Value", name: "value", widget: "string", hint: "e.g. 290%, 12, £120K" }
+          - { label: "Metric", name: "metric", widget: "string" }
+      - { label: "Hero Image", name: "heroImage", widget: "image", required: false }
+      - { label: "Published Date", name: "publishedDate", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
+      - { label: "Featured", name: "featured", widget: "boolean", default: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "insights"
+    label: "Insights"
+    folder: "src/content/insights"
+    create: true
+    slug: "{{year}}-{{month}}-{{slug}}"
+    preview_path: "insights/{{slug}}"
+    extension: "mdx"
+    format: "frontmatter"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Excerpt", name: "excerpt", widget: "text" }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options: ["AI & Automation", "Thought Leadership", "Podcasts", "News", "Blog"]
+      - { label: "Author", name: "author", widget: "string", default: "AlgoMarketing" }
+      - { label: "Published Date", name: "publishedDate", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
+      - { label: "Hero Image", name: "heroImage", widget: "image", required: false }
+      - { label: "Tags", name: "tags", widget: "list", default: [] }
+      - { label: "Featured", name: "featured", widget: "boolean", default: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  # ════════════════════════════════════════════
+  # PAGE CONTENT (file-based, one file per page)
+  # ════════════════════════════════════════════
+
+  - name: "pages"
+    label: "Pages"
+    files:
+      # ── Homepage ──
+      - label: "Homepage"
+        name: "homepage"
+        file: "src/data/pages/homepage.yml"
+        preview_path: "/"
+        fields:
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Body", name: "body", widget: "text" }
+              - label: "Primary Button"
+                name: "primaryButton"
+                widget: "object"
+                fields:
+                  - { label: "Text", name: "text", widget: "string" }
+                  - { label: "Link", name: "link", widget: "string" }
+              - label: "Secondary Button"
+                name: "secondaryButton"
+                widget: "object"
+                fields:
+                  - { label: "Text", name: "text", widget: "string" }
+                  - { label: "Link", name: "link", widget: "string" }
+          - label: "Problem Section"
+            name: "problem"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Paragraphs", name: "paragraphs", widget: "list", field: { label: "Paragraph", name: "paragraph", widget: "text" } }
+              - label: "Stats"
+                name: "stats"
+                widget: "list"
+                fields:
+                  - { label: "Value", name: "value", widget: "string" }
+                  - { label: "Label", name: "label", widget: "string" }
+          - label: "Execution Bottleneck"
+            name: "executionBottleneck"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Subheading", name: "subheading", widget: "string" }
+              - label: "Cards"
+                name: "cards"
+                widget: "list"
+                fields:
+                  - { label: "Number", name: "number", widget: "string" }
+                  - { label: "Heading", name: "heading", widget: "string" }
+                  - { label: "Copy", name: "copy", widget: "text" }
+          - label: "How It Works"
+            name: "howItWorks"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - label: "Steps"
+                name: "steps"
+                widget: "list"
+                fields:
+                  - { label: "Number", name: "number", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Copy", name: "copy", widget: "string" }
+              - label: "Blockquote"
+                name: "blockquote"
+                widget: "object"
+                fields:
+                  - { label: "Text", name: "text", widget: "text" }
+                  - { label: "Attribution", name: "attribution", widget: "string" }
+          - label: "Solutions Overview"
+            name: "solutions"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - label: "Cards"
+                name: "cards"
+                widget: "list"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Copy", name: "copy", widget: "text" }
+                  - { label: "Link", name: "link", widget: "string" }
+                  - { label: "Icon (HTML)", name: "icon", widget: "string" }
+          - label: "Comparison Section"
+            name: "comparisonSection"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Body", name: "body", widget: "text" }
+          - label: "Role-Based Routing"
+            name: "roleBased"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - label: "Cards"
+                name: "cards"
+                widget: "list"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Copy", name: "copy", widget: "text" }
+                  - { label: "Link", name: "link", widget: "string" }
+          - label: "Case Study Spotlight"
+            name: "caseStudySpotlight"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - label: "Studies"
+                name: "studies"
+                widget: "list"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Client", name: "client", widget: "string" }
+                  - { label: "Stat", name: "stat", widget: "string" }
+                  - { label: "Stat Label", name: "statLabel", widget: "string" }
+                  - { label: "Slug", name: "slug", widget: "string" }
+          - label: "Stats Section"
+            name: "statsSection"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - label: "Stats"
+                name: "stats"
+                widget: "list"
+                fields:
+                  - { label: "Value", name: "value", widget: "string" }
+                  - { label: "Label", name: "label", widget: "string" }
+          - label: "FAQ"
+            name: "faq"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - label: "Items"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Question", name: "question", widget: "string" }
+                  - { label: "Answer", name: "answer", widget: "text" }
+          - label: "CTA"
+            name: "cta"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Subtext", name: "subtext", widget: "text" }
+
+      # ── About ──
+      - label: "About"
+        name: "about"
+        file: "src/data/pages/about.yml"
+        preview_path: "/about"
+        fields:
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Body", name: "body", widget: "text" }
+          - label: "Our Story"
+            name: "story"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Paragraphs", name: "paragraphs", widget: "list", field: { label: "Paragraph", name: "paragraph", widget: "text" } }
+          - label: "Founder"
+            name: "founder"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Paragraphs", name: "paragraphs", widget: "list", field: { label: "Paragraph", name: "paragraph", widget: "text" } }
+              - { label: "Photo", name: "photo", widget: "image" }
+          - label: "Timeline"
+            name: "timeline"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - label: "Entries"
+                name: "entries"
+                widget: "list"
+                summary: "{{fields.year}}: {{fields.description}}"
+                fields:
+                  - { label: "Year", name: "year", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+          - label: "Diversity"
+            name: "diversity"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - label: "Stats"
+                name: "stats"
+                widget: "list"
+                fields:
+                  - { label: "Value", name: "value", widget: "string" }
+                  - { label: "Label", name: "label", widget: "string" }
+          - label: "Process"
+            name: "process"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - label: "Steps"
+                name: "steps"
+                widget: "list"
+                fields:
+                  - { label: "Number", name: "number", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+          - label: "CTA"
+            name: "cta"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+
+      # ── Contact ──
+      - label: "Contact"
+        name: "contact"
+        file: "src/data/pages/contact.yml"
+        preview_path: "/contact"
+        fields:
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Body", name: "body", widget: "text" }
+          - label: "Form"
+            name: "form"
+            widget: "object"
+            fields:
+              - label: "Fields"
+                name: "fields"
+                widget: "list"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "ID", name: "id", widget: "string" }
+                  - { label: "Name", name: "name", widget: "string" }
+                  - { label: "Type", name: "type", widget: "string" }
+                  - { label: "Required", name: "required", widget: "boolean", default: false }
+                  - { label: "Full Width", name: "fullWidth", widget: "boolean", default: false }
+              - label: "Message Field"
+                name: "messageField"
+                widget: "object"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "ID", name: "id", widget: "string" }
+                  - { label: "Name", name: "name", widget: "string" }
+              - label: "Checkboxes"
+                name: "checkboxes"
+                widget: "list"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "ID", name: "id", widget: "string" }
+                  - { label: "Name", name: "name", widget: "string" }
+              - { label: "Submit Text", name: "submitText", widget: "string" }
+          - label: "Trusted By"
+            name: "trustedBy"
+            widget: "object"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - label: "Clients"
+                name: "clients"
+                widget: "list"
+                field: { label: "Client Name", name: "name", widget: "string" }
+          - label: "Contact Image"
+            name: "contactImage"
+            widget: "object"
+            fields:
+              - { label: "Image", name: "src", widget: "image" }
+              - { label: "Alt Text", name: "alt", widget: "string" }
+
+      # ── 404 ──
+      - label: "404 Page"
+        name: "404"
+        file: "src/data/pages/404.yml"
+        preview_path: "/404"
+        fields:
+          - { label: "Heading", name: "heading", widget: "string" }
+          - { label: "Body", name: "body", widget: "text" }
+          - label: "Primary Button"
+            name: "primaryButton"
+            widget: "object"
+            fields:
+              - { label: "Text", name: "text", widget: "string" }
+              - { label: "Link", name: "link", widget: "string" }
+          - label: "Secondary Button"
+            name: "secondaryButton"
+            widget: "object"
+            fields:
+              - { label: "Text", name: "text", widget: "string" }
+              - { label: "Link", name: "link", widget: "string" }
+          - label: "Popular Pages"
+            name: "popularPages"
+            widget: "object"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - label: "Links"
+                name: "links"
+                widget: "list"
+                fields:
+                  - { label: "Text", name: "text", widget: "string" }
+                  - { label: "URL", name: "href", widget: "string" }
+
+      # ── Privacy Policy ──
+      - label: "Privacy Policy"
+        name: "privacy-policy"
+        file: "src/data/pages/privacy-policy.yml"
+        preview_path: "/legal/privacy-policy"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
+
+  # ════════════════════════════════════════════
+  # SOLUTION PAGES
+  # ════════════════════════════════════════════
+
+  - name: "solution-pages"
+    label: "Solution Pages"
+    files:
+      # ── Solutions Index ──
+      - label: "Solutions Index"
+        name: "solutions-index"
+        file: "src/data/pages/solutions-index.yml"
+        preview_path: "/solutions"
+        fields:
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Body", name: "body", widget: "text" }
+          - label: "Solutions"
+            name: "solutions"
+            widget: "list"
+            fields:
+              - { label: "Number", name: "number", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Link", name: "link", widget: "string" }
+          - label: "CTA"
+            name: "cta"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+
+      # ── Embedded Talent ──
+      - label: "Embedded Talent"
+        name: "embedded-talent"
+        file: "src/data/pages/embedded-talent.yml"
+        preview_path: "/solutions/embedded-talent"
+        fields: &solution-page-fields
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Body", name: "body", widget: "text" }
+          - label: "Challenge"
+            name: "challenge"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - label: "Cards"
+                name: "cards"
+                widget: "list"
+                fields:
+                  - { label: "Stat", name: "stat", widget: "string" }
+                  - { label: "Text", name: "text", widget: "text" }
+          - label: "Approach"
+            name: "approach"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - label: "Steps"
+                name: "steps"
+                widget: "list"
+                fields:
+                  - { label: "Number", name: "number", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+          - label: "Use Cases"
+            name: "useCases"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - label: "Cards"
+                name: "cards"
+                widget: "list"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+          - label: "Featured Case Study"
+            name: "featuredCaseStudy"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Client", name: "client", widget: "string" }
+              - { label: "Stat", name: "stat", widget: "string" }
+              - { label: "Stat Label", name: "statLabel", widget: "string" }
+              - { label: "Slug", name: "slug", widget: "string" }
+          - label: "CTA"
+            name: "cta"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Subtext", name: "subtext", widget: "text" }
+
+      # ── AI Workflow Transformation ──
+      - label: "AI Workflow Transformation"
+        name: "ai-workflow-transformation"
+        file: "src/data/pages/ai-workflow-transformation.yml"
+        preview_path: "/solutions/ai-workflow-transformation"
+        fields: *solution-page-fields
+
+      # ── Marketing Operations ──
+      - label: "Marketing Operations"
+        name: "marketing-operations"
+        file: "src/data/pages/marketing-operations.yml"
+        preview_path: "/solutions/marketing-operations"
+        fields: *solution-page-fields
+
+  # ════════════════════════════════════════════
+  # LISTING PAGES
+  # ════════════════════════════════════════════
+
+  - name: "listing-pages"
+    label: "Listing Pages"
+    files:
+      - label: "Case Studies Index"
+        name: "case-studies-index"
+        file: "src/data/pages/case-studies-index.yml"
+        preview_path: "/case-studies"
+        fields:
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Subtext", name: "subtext", widget: "text" }
+          - label: "CTA"
+            name: "cta"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Subtext", name: "subtext", widget: "text" }
+
+      - label: "Insights Index"
+        name: "insights-index"
+        file: "src/data/pages/insights-index.yml"
+        preview_path: "/insights"
+        fields:
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Subtext", name: "subtext", widget: "text" }
+          - { label: "All Articles Heading", name: "allArticlesHeading", widget: "string" }
+          - label: "CTA"
+            name: "cta"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Subtext", name: "subtext", widget: "text" }
+
+  # ════════════════════════════════════════════
+  # SHARED CONTENT
+  # ════════════════════════════════════════════
+
+  - name: "shared-content"
+    label: "Shared Content"
+    files:
+      - label: "Comparison Table"
+        name: "comparison-table"
+        file: "src/data/shared/comparison-table.yml"
+        fields:
+          - label: "Rows"
+            name: "rows"
+            widget: "list"
+            summary: "{{fields.criteria}}"
+            fields:
+              - { label: "Criteria", name: "criteria", widget: "string" }
+              - { label: "Staffing Agencies", name: "agency", widget: "string" }
+              - { label: "Freelancer Platforms", name: "freelancer", widget: "string" }
+              - { label: "AlgoMarketing", name: "algo", widget: "string" }
+
+      - label: "Client Logos"
+        name: "client-logos"
+        file: "src/data/shared/client-logos.yml"
+        fields:
+          - { label: "Heading", name: "heading", widget: "string" }
+          - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+          - label: "Companies"
+            name: "companies"
+            widget: "list"
+            summary: "{{fields.name}}"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Logo", name: "logo", widget: "image" }

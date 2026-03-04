@@ -1,0 +1,279 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import SectionHeading from '../components/brand/SectionHeading.astro';
+import EyebrowLabel from '../components/brand/EyebrowLabel.astro';
+import GradientSection from '../components/brand/GradientSection.astro';
+import FrostedGlassCard from '../components/brand/FrostedGlassCard.astro';
+import CTABanner from '../components/brand/CTABanner.astro';
+import StatCard from '../components/brand/StatCard.astro';
+import ClientLogoMarquee from '../components/brand/ClientLogoMarquee.astro';
+import CaseStudyCard from '../components/brand/CaseStudyCard.astro';
+import OrbitalGraphic from '../components/brand/OrbitalGraphic.astro';
+import Reveal from '../components/brand/Reveal.astro';
+import ComparisonTable from '../components/brand/ComparisonTable.astro';
+import data from '../data/pages/homepage.yml';
+---
+
+<PageLayout title={data.hero.heading}>
+
+  <!-- ======================== 1. HERO SECTION ======================== -->
+  <section class="relative bg-surface-mint py-20 md:py-32 overflow-hidden">
+    <img src="/images/hero-abstract.svg" alt="" aria-hidden="true" class="absolute left-[-200px] top-[-200px] w-[800px] h-[800px] opacity-30 pointer-events-none" />
+    <OrbitalGraphic size="lg" class="right-[-100px] top-1/2 -translate-y-1/2" />
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <EyebrowLabel class="mb-4 block">{data.hero.eyebrow}</EyebrowLabel>
+
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-brand-navy max-w-4xl mx-auto">
+        {data.hero.heading}
+      </h1>
+
+      <p class="text-lg md:text-xl text-neutral-mid max-w-2xl mx-auto mt-6">
+        {data.hero.body}
+      </p>
+
+      <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a
+          href={data.hero.primaryButton.link}
+          class="inline-block bg-gradient-primary text-white font-semibold rounded-full px-8 py-4 text-lg transition-all duration-200 hover:shadow-lg hover:scale-105"
+        >
+          {data.hero.primaryButton.text}
+        </a>
+        <a
+          href={data.hero.secondaryButton.link}
+          class="inline-block border-2 border-brand-navy text-brand-navy font-semibold rounded-full px-8 py-4 text-lg transition-all duration-200 hover:bg-brand-navy hover:text-white"
+        >
+          {data.hero.secondaryButton.text}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== 2. CLIENT LOGO MARQUEE ======================== -->
+  <div class="bg-white py-12">
+    <ClientLogoMarquee />
+  </div>
+
+  <!-- ======================== 3. PROBLEM SECTION ======================== -->
+  <section class="bg-white py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Reveal>
+        <SectionHeading eyebrow={data.problem.eyebrow}>
+          {data.problem.heading}
+        </SectionHeading>
+      </Reveal>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+        <!-- Left: Descriptive text -->
+        <Reveal delay={1} class="space-y-6 text-neutral-mid text-lg leading-relaxed">
+          {data.problem.paragraphs.map((p) => (
+            <p>{p}</p>
+          ))}
+        </Reveal>
+
+        <!-- Right: Stat callout cards -->
+        <Reveal delay={2} class="space-y-4">
+          {data.problem.stats.map((stat) => (
+            <div class="bg-surface-green rounded-xl p-6 text-center">
+              <p class="text-4xl font-bold text-brand-navy">{stat.value}</p>
+              <p class="text-neutral-mid mt-1">{stat.label}</p>
+            </div>
+          ))}
+        </Reveal>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== 4. EXECUTION BOTTLENECK SECTION ======================== -->
+  <GradientSection variant="primary">
+    <Reveal>
+      <h2 class="text-white text-3xl md:text-4xl font-bold text-center">
+        {data.executionBottleneck.heading}
+      </h2>
+      <p class="text-white/80 text-lg md:text-xl text-center max-w-2xl mx-auto mt-4 mb-12">
+        {data.executionBottleneck.subheading}
+      </p>
+    </Reveal>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {data.executionBottleneck.cards.map((card, i) => (
+        <Reveal delay={i + 1}>
+          <FrostedGlassCard>
+            <span class="text-2xl font-bold text-[#1FE0BF] block mb-3">{card.number}</span>
+            <h3 class="text-xl font-bold text-white mb-2">{card.heading}</h3>
+            <p class="text-white/80">
+              {card.copy}
+            </p>
+          </FrostedGlassCard>
+        </Reveal>
+      ))}
+    </div>
+  </GradientSection>
+
+  <!-- ======================== 5. THE ALGOMARKETING APPROACH ======================== -->
+  <section class="bg-surface-green py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Reveal>
+        <SectionHeading eyebrow={data.howItWorks.eyebrow}>
+          {data.howItWorks.heading}
+        </SectionHeading>
+      </Reveal>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mt-12">
+        {data.howItWorks.steps.map((step, i) => (
+          <Reveal delay={i + 1}>
+            <p class="text-5xl font-bold text-brand-green">{step.number}</p>
+            <h3 class="font-semibold text-brand-navy text-lg mt-3 mb-2">{step.title}</h3>
+            <p class="text-neutral-mid text-sm">{step.copy}</p>
+          </Reveal>
+        ))}
+      </div>
+
+      <Reveal tag="blockquote" class="mt-16 max-w-3xl mx-auto border-l-4 border-brand-green pl-6 py-2">
+        <p class="text-lg text-neutral-mid italic">
+          {data.howItWorks.blockquote.text}
+        </p>
+        <cite class="text-sm text-neutral-mid not-italic mt-2 block">{data.howItWorks.blockquote.attribution}</cite>
+      </Reveal>
+    </div>
+  </section>
+
+  <!-- ======================== 6. SOLUTIONS OVERVIEW ======================== -->
+  <section class="bg-white py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Reveal>
+        <SectionHeading eyebrow={data.solutions.eyebrow}>
+          {data.solutions.heading}
+        </SectionHeading>
+      </Reveal>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+        {data.solutions.cards.map((card, i) => (
+          <Reveal delay={i + 1} class="bg-white rounded-xl border border-neutral-light p-8 card-hover">
+            <div class="w-14 h-14 rounded-full bg-brand-green/10 flex items-center justify-center mb-6">
+              <span class="text-2xl" set:html={card.icon}></span>
+            </div>
+            <h3 class="font-bold text-xl text-brand-navy mb-3">{card.title}</h3>
+            <p class="text-neutral-mid mb-4">
+              {card.copy}
+            </p>
+            <a href={card.link} class="text-brand-green font-semibold link-highlight">
+              Learn More &rarr;
+            </a>
+          </Reveal>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== 6B. COMPARISON TABLE ======================== -->
+  <section class="bg-surface-green py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Reveal>
+        <SectionHeading eyebrow={data.comparisonSection.eyebrow}>
+          {data.comparisonSection.heading}
+        </SectionHeading>
+        <p class="text-neutral-mid text-lg text-center max-w-2xl mx-auto mt-4 mb-12">
+          {data.comparisonSection.body}
+        </p>
+      </Reveal>
+      <Reveal delay={1}>
+        <ComparisonTable />
+      </Reveal>
+    </div>
+  </section>
+
+  <!-- ======================== 7. ROLE-BASED ROUTING ======================== -->
+  <section class="bg-surface-purple py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Reveal>
+        <SectionHeading eyebrow={data.roleBased.eyebrow}>
+          {data.roleBased.heading}
+        </SectionHeading>
+      </Reveal>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+        {data.roleBased.cards.map((card, i) => (
+          <Reveal delay={i + 1} class="bg-white rounded-xl p-8 shadow-sm card-hover">
+            <h3 class="font-bold text-xl text-brand-navy mb-3">{card.title}</h3>
+            <p class="text-neutral-mid mb-4">
+              {card.copy}
+            </p>
+            <a href={card.link} class="text-brand-green font-semibold link-highlight">
+              Learn More &rarr;
+            </a>
+          </Reveal>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== 8. CASE STUDY SPOTLIGHT ======================== -->
+  <GradientSection variant="hero">
+    <Reveal>
+      <SectionHeading eyebrow={data.caseStudySpotlight.eyebrow} class="mb-12">
+        <span class="text-white">{data.caseStudySpotlight.heading}</span>
+      </SectionHeading>
+    </Reveal>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {data.caseStudySpotlight.studies.map((study) => (
+        <CaseStudyCard
+          title={study.title}
+          client={study.client}
+          stat={study.stat}
+          statLabel={study.statLabel}
+          slug={study.slug}
+        />
+      ))}
+    </div>
+  </GradientSection>
+
+  <!-- ======================== 9. STATS SECTION ======================== -->
+  <section style="background: linear-gradient(135deg, #FB81BE 0%, #FBBC81 100%);" class="py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Reveal>
+        <h2 class="text-white text-center text-3xl font-bold mb-12">
+          {data.statsSection.heading}
+        </h2>
+      </Reveal>
+
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+        {data.statsSection.stats.map((stat, i) => (
+          <Reveal delay={i + 1}><StatCard value={stat.value} label={stat.label} animate /></Reveal>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== 10. FAQ SECTION ======================== -->
+  <section class="bg-white py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Reveal>
+        <SectionHeading eyebrow={data.faq.eyebrow}>
+          {data.faq.heading}
+        </SectionHeading>
+      </Reveal>
+
+      <Reveal delay={1} class="max-w-3xl mx-auto mt-12">
+        {data.faq.items.map((item) => (
+          <details class="border-b border-neutral-light py-4 group">
+            <summary class="font-semibold text-brand-navy text-lg cursor-pointer list-none flex items-center justify-between">
+              {item.question}
+              <span class="text-brand-green text-2xl transition-transform duration-200 group-open:rotate-45">+</span>
+            </summary>
+            <p class="text-neutral-mid mt-2">
+              {item.answer}
+            </p>
+          </details>
+        ))}
+      </Reveal>
+    </div>
+  </section>
+
+  <!-- ======================== 11. FINAL CTA ======================== -->
+  <CTABanner subtext={data.cta.subtext}>
+    {data.cta.heading}
+  </CTABanner>
+
+</PageLayout>

@@ -1,0 +1,154 @@
+@import "tailwindcss";
+
+@theme {
+  /* Primary Colors */
+  --color-brand-green: #1FE0BF;
+  --color-brand-green-bright: #35F4C5;
+  --color-brand-navy: #2F455C;
+  --color-brand-purple: #8A71EE;
+  --color-brand-blue: #1DCDFE;
+  --color-brand-pink: #FB81BE;
+  --color-brand-orange: #FBBC81;
+
+  /* Surface / Background Tints */
+  --color-surface-green: #F1FCF9;
+  --color-surface-purple: #FBF9FE;
+  --color-surface-blue: #F9FBFF;
+  --color-surface-gray: #FAFAFA;
+  --color-surface-mint: #F0F7F4;
+
+  /* Neutrals */
+  --color-neutral-dark: #474646;
+  --color-neutral-mid: #727272;
+  --color-neutral-light: #DDDDDD;
+
+  /* Fonts */
+  --font-sans: 'Figtree', Arial, sans-serif;
+  --font-display: 'Exo', sans-serif;
+}
+
+/* Gradient utilities */
+.bg-gradient-primary {
+  background: radial-gradient(circle farthest-corner at 0% 100%, #8A71EE, #1DCDFE 50%, #1FE0BF);
+}
+
+.bg-gradient-hero {
+  background: radial-gradient(circle farthest-corner at 0% 100%, #8A71EE, #1DCDFE 55%, #35F4C5);
+}
+
+.bg-gradient-cta {
+  background: radial-gradient(circle farthest-corner at 0% 100%, #1FE0BF 10%, #1DCDFE 30%, #8A71EE 80%);
+}
+
+.text-gradient-brand {
+  background: radial-gradient(circle farthest-corner at 0% 100%, #8A71EE, #1DCDFE 50%, #1FE0BF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Frosted glass utility */
+.glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.glass-light {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* ---- Reveal-on-scroll ---- */
+.reveal {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---- Counter animation ---- */
+[data-counter] {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- Creative link highlighting ---- */
+.link-highlight {
+  background-image: linear-gradient(to right, var(--color-brand-green), var(--color-brand-green));
+  background-size: 0% 2px;
+  background-position: left bottom;
+  background-repeat: no-repeat;
+  transition: background-size 0.3s ease;
+  padding-bottom: 2px;
+}
+
+.link-highlight:hover {
+  background-size: 100% 2px;
+}
+
+/* Apply link-highlight to prose links */
+.prose a {
+  background-image: linear-gradient(to right, var(--color-brand-green), var(--color-brand-green));
+  background-size: 0% 2px;
+  background-position: left bottom;
+  background-repeat: no-repeat;
+  transition: background-size 0.3s ease, color 0.2s ease;
+  padding-bottom: 2px;
+  text-decoration: none !important;
+}
+
+.prose a:hover {
+  background-size: 100% 2px;
+}
+
+/* ---- Enhanced hover effects ---- */
+.card-hover {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(47, 69, 92, 0.1);
+}
+
+/* ---- Reduced motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .link-highlight,
+  .prose a {
+    transition: none;
+  }
+
+  .card-hover {
+    transition: none;
+  }
+
+  .marquee-track {
+    animation: none;
+  }
+}
+
+/* Base styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-brand-navy);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

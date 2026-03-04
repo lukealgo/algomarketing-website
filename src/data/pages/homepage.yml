@@ -1,0 +1,153 @@
+hero:
+  eyebrow: "MARKETING EXECUTION INFRASTRUCTURE"
+  heading: "Execute Marketing Faster Than Your Hiring Process Allows"
+  body: "Embed AI-fluent marketing operators directly into your team in weeks, not months. Integrate into your workflows, execute at speed, deliver results — without FTE overhead, compliance headaches, or recruitment delays."
+  primaryButton:
+    text: "Book A Call"
+    link: "/contact"
+  secondaryButton:
+    text: "Explore Solutions"
+    link: "/solutions"
+
+problem:
+  eyebrow: "THE CHALLENGE"
+  heading: "Modern Marketing Moves Faster Than Your Hiring Process"
+  paragraphs:
+    - "Marketing leaders are under more pressure than ever. Campaign cycles are shorter, channels are multiplying, and AI is rewriting the playbook every quarter. Yet the way most organisations build marketing teams hasn't changed in decades."
+    - "You know what needs to happen. The strategy is approved, the budget is allocated, and the quarterly targets are set. But execution stalls because you can't hire fast enough, can't find the right specialists, or can't justify permanent headcount for project-based needs."
+    - "The result? Missed windows, burned-out teams, and strategies that never make it off the slide deck."
+  stats:
+    - value: "142 Days"
+      label: "Average Enterprise Hiring Cycle"
+    - value: "71%"
+      label: "of CMOs lack resources to execute strategy"
+    - value: "4-6 Months"
+      label: "Traditional time-to-productivity"
+
+executionBottleneck:
+  heading: "Execution Capacity Is Your Bottleneck"
+  subheading: "Your strategy is solid. The problem is bandwidth."
+  cards:
+    - number: "01"
+      heading: "Hiring Is Too Slow"
+      copy: "Traditional recruitment can't keep up. By the time your new hire is productive, AI capability has evolved twice."
+    - number: "02"
+      heading: "Workloads Are Variable"
+      copy: "You need surge capacity for launches and campaigns — not 3 new FTEs sitting idle between projects."
+    - number: "03"
+      heading: "Skills Gaps Block Execution"
+      copy: "AI workflows, lifecycle automation, RevOps — these require specialists who aren't on job boards."
+    - number: "04"
+      heading: "Contractors Create Risk"
+      copy: "Managing payroll, contracts, and compliance across regions slows down what matters: shipping campaigns."
+
+howItWorks:
+  eyebrow: "HOW IT WORKS"
+  heading: "The Algomarketing Approach"
+  steps:
+    - number: "1"
+      title: "Define Your Mission"
+      copy: "Tell us what you need to execute."
+    - number: "2"
+      title: "Deploy an Algo"
+      copy: "We match and embed the right specialist in your team."
+    - number: "3"
+      title: "Transform Workflows"
+      copy: "AI-enhanced processes built around your operations."
+    - number: "4"
+      title: "Measure Impact"
+      copy: "Track outcomes, scale what works, iterate."
+  blockquote:
+    text: "\"71% of CMOs report lacking the resources to fully execute their marketing strategy.\""
+    attribution: "— Gartner"
+
+solutions:
+  eyebrow: "SOLUTIONS"
+  heading: "Solutions Built Around Your Needs"
+  cards:
+    - title: "Embedded Talent"
+      copy: "Deploy AI-fluent marketers directly into your team in days. Scale execution without hiring."
+      link: "/solutions/embedded-talent"
+      icon: "&#x1F465;"
+    - title: "AI Workflow Transformation"
+      copy: "Implement AI-powered workflows that multiply your team's output and compress timelines."
+      link: "/solutions/ai-workflow-transformation"
+      icon: "&#x2699;&#xFE0F;"
+    - title: "Marketing Operations"
+      copy: "Optimise your MarTech stack, unify reporting, and build operational excellence."
+      link: "/solutions/marketing-operations"
+      icon: "&#x1F4CA;"
+
+comparisonSection:
+  eyebrow: "WHY ALGOMARKETING"
+  heading: "Not a Staffing Firm. Not a Marketplace."
+  body: "See how our structured deployment model compares to traditional approaches."
+
+roleBased:
+  eyebrow: "FOR YOUR ROLE"
+  heading: "Solutions Designed for How You Work"
+  cards:
+    - title: "For Marketing Leaders"
+      copy: "Scale execution, close skills gaps, and deliver results faster — without burning out your core team."
+      link: "/solutions"
+    - title: "For Procurement Leaders"
+      copy: "Maintain cost control, compliance, and visibility while enabling speed through streamlined workforce management."
+      link: "/solutions"
+    - title: "For Recruiting Leaders"
+      copy: "Support the business without creating hiring bottlenecks or risk. A faster path to deployment."
+      link: "/solutions"
+
+caseStudySpotlight:
+  eyebrow: "CASE STUDIES"
+  heading: "Results That Speak for Themselves"
+  studies:
+    - title: "Cutting Campaign Production Time by 50%"
+      client: "Global Enterprise SaaS"
+      stat: "50%"
+      statLabel: "Reduction in Production Time"
+      slug: "cutting-campaign-production-time"
+    - title: "Scaling Global Marketing Automation"
+      client: "Fortune 500 Technology"
+      stat: "200%"
+      statLabel: "Increase in MQLs"
+      slug: "scaling-global-marketing-automation"
+    - title: "Engineering Scalable GenAI Solutions"
+      client: "Global Manufacturing Leader"
+      stat: "290%"
+      statLabel: "Productivity Increase"
+      slug: "engineering-scalable-genai-solutions"
+
+statsSection:
+  heading: "Results That Show Up In Quarterly Reviews"
+  stats:
+    - value: "94%"
+      label: "Client satisfaction rate"
+    - value: "33%"
+      label: "Average cost reduction"
+    - value: "67%"
+      label: "Faster time to market"
+    - value: "1000+"
+      label: "Specialist community"
+    - value: "75+"
+      label: "Enterprise teams supported"
+
+faq:
+  eyebrow: "FAQ"
+  heading: "Frequently Asked Questions"
+  items:
+    - question: "What is a contingent marketing workforce?"
+      answer: "A flexible pool of marketing specialists who work on a temporary or project basis. They embed directly into your team, follow your processes, and deliver against your goals — without permanent headcount commitment. It gives you the ability to scale execution up or down based on actual demand."
+    - question: "How is Algomarketing different from a staffing firm?"
+      answer: "We're focused exclusively on marketing execution. Every specialist in our network is vetted for AI fluency, marketing expertise, and the ability to embed and deliver within enterprise environments. We don't just place people — we transform how your team works."
+    - question: "Who are Algos?"
+      answer: "AI-fluent marketing specialists who embed directly into your team. They bring deep expertise across demand generation, lifecycle marketing, RevOps, paid media, content, SEO, and marketing operations — enhanced by practical AI skills that multiply their output."
+    - question: "How fast can we get started?"
+      answer: "Most clients have specialists embedded within 2-3 weeks. We handle sourcing, vetting, onboarding, and compliance so you can move fast without cutting corners."
+    - question: "What marketing roles can you provide?"
+      answer: "Demand gen, lifecycle marketing, RevOps, paid media, content, SEO, marketing ops, and more. If it sits within the modern marketing function, we have specialists ready to deploy."
+    - question: "How does the process work?"
+      answer: "Book a call, tell us what you need, we recommend the right solution and handle sourcing, onboarding, and delivery. It's designed to be as simple as possible so you can focus on strategy while we handle execution."
+
+cta:
+  heading: "Start Scaling Marketing Without Hiring"
+  subtext: "Tell us what you're trying to execute, and we'll recommend the right solution for your team."

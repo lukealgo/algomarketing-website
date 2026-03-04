@@ -1,0 +1,33 @@
+---
+interface Props {
+  variant: 'primary' | 'hero' | 'cta' | 'warm';
+  class?: string;
+}
+
+const { variant, class: className } = Astro.props;
+
+const gradientMap: Record<string, string> = {
+  primary: 'bg-gradient-primary',
+  hero: 'bg-gradient-hero',
+  cta: 'bg-gradient-cta',
+  warm: 'bg-gradient-warm',
+};
+---
+
+<section
+  class:list={[
+    'w-full py-16 md:py-24',
+    gradientMap[variant],
+    className,
+  ]}
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <slot />
+  </div>
+</section>
+
+<style>
+  .bg-gradient-warm {
+    background: radial-gradient(circle farthest-corner at 100% 0%, #FBBC81, #FB81BE 50%, #8A71EE);
+  }
+</style>

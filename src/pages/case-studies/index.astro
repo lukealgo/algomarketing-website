@@ -1,0 +1,58 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import GradientSection from '../../components/brand/GradientSection.astro';
+import EyebrowLabel from '../../components/brand/EyebrowLabel.astro';
+import OrbitalGraphic from '../../components/brand/OrbitalGraphic.astro';
+import CaseStudyCard from '../../components/brand/CaseStudyCard.astro';
+import CTABanner from '../../components/brand/CTABanner.astro';
+import Reveal from '../../components/brand/Reveal.astro';
+import { getCollection } from 'astro:content';
+import data from '../../data/pages/case-studies-index.yml';
+
+const caseStudies = await getCollection('case-studies');
+const sortedStudies = caseStudies.sort(
+  (a, b) => b.data.publishedDate.getTime() - a.data.publishedDate.getTime()
+);
+---
+
+<PageLayout title="Case Studies">
+  <!-- Hero -->
+  <GradientSection variant="hero">
+    <div class="relative text-center">
+      <OrbitalGraphic size="lg" class="absolute -right-32 -top-32" />
+      <EyebrowLabel class="text-white/80">CASE STUDIES</EyebrowLabel>
+      <h1 class="text-4xl md:text-5xl font-bold text-white mt-4">
+        {data.hero.heading}
+      </h1>
+      <p class="text-white/80 text-lg max-w-2xl mx-auto mt-6">
+        {data.hero.subtext}
+      </p>
+    </div>
+  </GradientSection>
+
+  <!-- Case Studies Grid -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {sortedStudies.map((study, i) => (
+          <Reveal delay={i}>
+            <CaseStudyCard
+              title={study.data.title}
+              client={study.data.client}
+              stat={study.data.results[0]?.value || ''}
+              statLabel={study.data.results[0]?.metric || ''}
+              slug={study.id}
+            />
+          </Reveal>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <Reveal>
+    <CTABanner subtext={data.cta.subtext}>
+      {data.cta.heading}
+    </CTABanner>
+  </Reveal>
+</PageLayout>

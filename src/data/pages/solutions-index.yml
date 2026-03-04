@@ -1,0 +1,21 @@
+hero:
+  eyebrow: "SOLUTIONS"
+  heading: "Marketing Execution Solutions for the AI Era"
+  body: "Whether you need embedded talent, workflow transformation, or operational excellence — we deploy the right capability for your challenge."
+
+solutions:
+  - number: "01"
+    title: "Embedded Talent"
+    description: "Deploy AI-fluent marketing specialists directly into your team. Scale execution capacity in days, not months — without the overhead of permanent hires."
+    link: "/solutions/embedded-talent"
+  - number: "02"
+    title: "AI Workflow Transformation"
+    description: "Implement AI-powered workflows that multiply your team's output. Our specialists build, deploy, and train your team on agentic AI solutions."
+    link: "/solutions/ai-workflow-transformation"
+  - number: "03"
+    title: "Marketing Operations"
+    description: "Optimise your MarTech stack, unify regional reporting, and build the operational foundation for scalable marketing execution."
+    link: "/solutions/marketing-operations"
+
+cta:
+  heading: "Ready to Find the Right Solution?"
